@@ -45,8 +45,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ij58t"]
-radius = 34.0
-height = 94.0
+radius = 23.0
+height = 64.0
 
 [node name="Mob" type="RigidBody2D" node_paths=PackedStringArray("animated_sprite", "collision_shape") groups=["mobs"]]
 collision_mask = 0
@@ -57,7 +57,7 @@ collision_shape = NodePath("CollisionShape2D")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wcvni")
 animation = &"walk"
 frame_progress = 0.872682
