@@ -14,12 +14,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-# Game over function
-func _on_player_hit() -> void:
+func game_over() -> void:
 	score_timer.stop()
 	mob_timer.stop()
 	
 	$HUD.show_game_over()
+	$Music.stop()
+	$DeathSound.play()
 	
 func new_game():
 	# Remove all remaining mobs if there are any
@@ -31,6 +32,7 @@ func new_game():
 	
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
+	$Music.play()
 
 func _on_score_timer_timeout() -> void:
 	score += 1
