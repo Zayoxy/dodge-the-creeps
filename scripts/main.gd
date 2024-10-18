@@ -10,7 +10,6 @@ var score : int
 func _ready() -> void:
 	pass
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -20,14 +19,22 @@ func _on_player_hit() -> void:
 	score_timer.stop()
 	mob_timer.stop()
 	
+	$HUD.show_game_over()
+	
 func new_game():
+	# Remove all remaining mobs if there are any
+	get_tree().call_group("mobs", "queue_free")
+	
 	score = 0
 	$Player.start($StartPosition.position)
 	start_timer.start()
+	
+	$HUD.update_score(score)
+	$HUD.show_message("Get Ready")
 
 func _on_score_timer_timeout() -> void:
 	score += 1
-
+	$HUD.update_score(score)
 
 func _on_start_timer_timeout() -> void:
 	mob_timer.start()
